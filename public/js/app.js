@@ -5154,6 +5154,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -5178,8 +5205,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         //console.log(response);
-        _this.postsResponse = response.data.data;
-        console.log(_this.postsResponse);
+        _this.postsResponse = response.data; //console.log(this.postsResponse); // Mi restituisce array di 9 elementi
       })["catch"](function (e) {
         console.log(e);
       });
@@ -5203,6 +5229,21 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (e) {
         console.log(e);
       });
+    },
+    textTruncate: function textTruncate(response) {
+      console.log(this.response); //testocompleto = postsResponse.data.content;
+      //Se la stringa è più lunga di 20 caratteri la taglio e metto i puntini
+
+      /*  if (testocompleto.length > 20) {
+        anteprima = testocompleto.substr(0, 20) + "...";
+        console.log(anteprima);
+      }
+      //In caso contrario la stampo per intero
+      else {
+        anteprima = testocompleto;
+      }
+       //Stampo a video il risultato
+      document.write(anteprima); */
     }
   },
   mounted: function mounted() {
@@ -41516,26 +41557,76 @@ var render = function () {
       _vm._v(" "),
       _c("section", { staticClass: "posts" }, [
         _c("div", { staticClass: "container" }, [
-          _c(
-            "div",
-            { staticClass: "row" },
-            _vm._l(_vm.posts, function (post) {
-              return _c("div", { key: post.id, staticClass: "col" }, [
-                _c("div", { staticClass: "prodct card" }, [
-                  _c("img", {
-                    attrs: { src: post.cover_image, alt: post.title },
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h3", [_vm._v(_vm._s(post.name))]),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-9" }, [
+              _c(
+                "div",
+                { staticClass: "row row-cols-md-5" },
+                _vm._l(_vm.postsResponse.data, function (post) {
+                  return _c("div", { key: post.id, staticClass: "col" }, [
+                    _c("div", { staticClass: "prodct card" }, [
+                      _c("img", {
+                        attrs: { src: post.cover_image, alt: post.title },
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c("h3", [_vm._v(_vm._s(post.title))]),
+                        _vm._v(" "),
+                        _c("small", [_vm._v(_vm._s(post.content))]),
+                      ]),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-2 text-white" }, [
+              _c("section", { staticClass: "categories" }, [
+                _c(
+                  "ul",
+                  [
+                    _c("li", { staticClass: "list-unstyled fw-bold" }, [
+                      _vm._v("Categorie"),
+                    ]),
                     _vm._v(" "),
-                    _c("small", [_vm._v(_vm._s(post.content))]),
-                  ]),
-                ]),
-              ])
-            }),
-            0
-          ),
+                    _vm._l(_vm.categories, function (category) {
+                      return _c("li", { key: category.id }, [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(category.name) +
+                            "\n              "
+                        ),
+                      ])
+                    }),
+                  ],
+                  2
+                ),
+              ]),
+              _vm._v(" "),
+              _c("section", { staticClass: "tag" }, [
+                _c(
+                  "ul",
+                  [
+                    _c("li", { staticClass: "list-unstyled fw-bold" }, [
+                      _vm._v("Tag"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.tags, function (tag) {
+                      return _c("li", { key: tag.id }, [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(tag.name) +
+                            "\n              "
+                        ),
+                      ])
+                    }),
+                  ],
+                  2
+                ),
+              ]),
+            ]),
+          ]),
         ]),
       ]),
     ],
@@ -54006,9 +54097,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\LARAVEL\laravel-boolpress-ManyToMany\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\MAMP\htdocs\LARAVEL\laravel-boolpress-ManyToMany\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\LARAVEL\laravel-boolpress-ManyToMany\resources\sass\admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\LARAVEL\laravel-api\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\MAMP\htdocs\LARAVEL\laravel-api\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\LARAVEL\laravel-api\resources\sass\admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

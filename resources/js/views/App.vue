@@ -4,14 +4,41 @@
     <section class="posts">
       <div class="container">
         <div class="row">
-          <div class="col" v-for="post in posts" :key="post.id">
-            <div class="prodct card">
-              <img :src="post.cover_image" :alt="post.title" />
-              <div class="card-body">
-                <h3>{{ post.name }}</h3>
-                <small>{{ post.content }}</small>
+          <div class="col-9">
+            <div class="row row-cols-md-5">
+              <div
+                class="col"
+                v-for="post in postsResponse.data"
+                :key="post.id"
+              >
+                <div class="prodct card">
+                  <img :src="post.cover_image" :alt="post.title" />
+                  <div class="card-body">
+                    <h3>{{ post.title }}</h3>
+                    <small>{{ post.content }}</small>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+          <div class="col-2 text-white">
+            <section class="categories">
+              <ul>
+                <li class="list-unstyled fw-bold">Categorie</li>
+                <li v-for="category in categories" :key="category.id">
+                  {{ category.name }}
+                </li>
+              </ul>
+            </section>
+
+            <section class="tag">
+              <ul>
+                <li class="list-unstyled fw-bold">Tag</li> 
+                <li v-for="tag in tags" :key="tag.id">
+                  {{ tag.name }}
+                </li>
+              </ul>
+            </section>
           </div>
         </div>
       </div>
@@ -44,8 +71,9 @@ export default {
         })
         .then((response) => {
           //console.log(response);
-          this.postsResponse = response.data.data;
-          console.log(this.postsResponse);
+          this.postsResponse = response.data;
+
+          //console.log(this.postsResponse); // Mi restituisce array di 9 elementi
         })
         .catch((e) => {
           console.log(e);
@@ -73,6 +101,24 @@ export default {
           console.log(e);
         });
     },
+
+    textTruncate(response) {
+      console.log(this.response);
+      //testocompleto = postsResponse.data.content;
+
+      //Se la stringa è più lunga di 20 caratteri la taglio e metto i puntini
+      /*  if (testocompleto.length > 20) {
+        anteprima = testocompleto.substr(0, 20) + "...";
+        console.log(anteprima);
+      }
+      //In caso contrario la stampo per intero
+      else {
+        anteprima = testocompleto;
+      }
+
+      //Stampo a video il risultato
+      document.write(anteprima); */
+    },
   },
 
   mounted() {
@@ -80,6 +126,6 @@ export default {
     this.getAllPosts(1);
     this.getAllCategories();
     this.getAllTags();
-  }
-}
+  },
+};
 </script>
