@@ -5182,6 +5182,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -41562,30 +41565,43 @@ var render = function () {
             _c("div", { staticClass: "col-9" }, [
               _c(
                 "div",
-                { staticClass: "row row-cols-md-5" },
+                { staticClass: "row row-cols-md-4" },
                 _vm._l(_vm.postsResponse.data, function (post) {
-                  return _c("div", { key: post.id, staticClass: "col" }, [
+                  return _c("div", { key: post.id, staticClass: "col p-3" }, [
                     _c("div", { staticClass: "prodct card" }, [
                       _c("img", {
-                        attrs: { src: post.cover_image, alt: post.title },
+                        attrs: {
+                          height: "200",
+                          src: post.cover_image,
+                          alt: post.title,
+                        },
                       }),
                       _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h3", [_vm._v(_vm._s(post.title))]),
-                        _vm._v(" "),
-                        post.content.length > 100
-                          ? _c("p", [
-                              _vm._v(
-                                _vm._s(
-                                  post.content.substring(0, 100) + "[...]"
-                                ) + " "
-                              ),
-                              _c("a", { attrs: { href: "#" } }, [
-                                _vm._v("Read more"),
-                              ]),
-                            ])
-                          : _c("p", [_vm._v(_vm._s(post.content))]),
-                      ]),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "card-body",
+                          staticStyle: { height: "15rem" },
+                        },
+                        [
+                          _c("h4", [_vm._v(_vm._s(post.title))]),
+                          _vm._v(" "),
+                          post.content.length > 100
+                            ? _c("p", [
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(
+                                      post.content.substring(0, 100) + "[...]"
+                                    ) +
+                                    "\n                    "
+                                ),
+                                _c("a", { attrs: { href: "#" } }, [
+                                  _vm._v("Read more"),
+                                ]),
+                              ])
+                            : _c("p", [_vm._v(_vm._s(post.content))]),
+                        ]
+                      ),
                     ]),
                   ])
                 }),
@@ -41593,7 +41609,7 @@ var render = function () {
               ),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-2 text-white" }, [
+            _c("div", { staticClass: "col-2" }, [
               _c("section", { staticClass: "categories" }, [
                 _c(
                   "ul",

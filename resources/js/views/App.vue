@@ -5,24 +5,27 @@
       <div class="container">
         <div class="row">
           <div class="col-9">
-            <div class="row row-cols-md-5">
+            <div class="row row-cols-md-4">
               <div
-                class="col"
+                class="col p-3"
                 v-for="post in postsResponse.data"
                 :key="post.id"
               >
                 <div class="prodct card">
-                  <img :src="post.cover_image" :alt="post.title" />
-                  <div class="card-body">
-                    <h3>{{ post.title }}</h3>
-                    <p v-if="post.content.length > 100">{{ post.content.substring(0, 100) + '[...]' }} <a href="#">Read more</a></p>
+                  <img height="200" :src="post.cover_image" :alt="post.title" />
+                  <div class="card-body" style="height: 15rem">
+                    <h4>{{ post.title }}</h4>
+                    <p v-if="post.content.length > 100">
+                      {{ post.content.substring(0, 100) + "[...]" }}
+                      <a href="#">Read more</a>
+                    </p>
                     <p v-else>{{ post.content }}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-2 text-white">
+          <div class="col-2">
             <section class="categories">
               <ul>
                 <li class="list-unstyled fw-bold">Categorie</li>
@@ -34,7 +37,7 @@
 
             <section class="tag">
               <ul>
-                <li class="list-unstyled fw-bold">Tag</li> 
+                <li class="list-unstyled fw-bold">Tag</li>
                 <li v-for="tag in tags" :key="tag.id">
                   {{ tag.name }}
                 </li>
