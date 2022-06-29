@@ -5181,6 +5181,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
@@ -41572,7 +41573,18 @@ var render = function () {
                       _c("div", { staticClass: "card-body" }, [
                         _c("h3", [_vm._v(_vm._s(post.title))]),
                         _vm._v(" "),
-                        _c("small", [_vm._v(_vm._s(post.content))]),
+                        post.content.length > 100
+                          ? _c("p", [
+                              _vm._v(
+                                _vm._s(
+                                  post.content.substring(0, 100) + "[...]"
+                                ) + " "
+                              ),
+                              _c("a", { attrs: { href: "#" } }, [
+                                _vm._v("Read more"),
+                              ]),
+                            ])
+                          : _c("p", [_vm._v(_vm._s(post.content))]),
                       ]),
                     ]),
                   ])

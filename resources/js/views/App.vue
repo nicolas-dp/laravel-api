@@ -15,7 +15,8 @@
                   <img :src="post.cover_image" :alt="post.title" />
                   <div class="card-body">
                     <h3>{{ post.title }}</h3>
-                    <small>{{ post.content }}</small>
+                    <p v-if="post.content.length > 100">{{ post.content.substring(0, 100) + '[...]' }} <a href="#">Read more</a></p>
+                    <p v-else>{{ post.content }}</p>
                   </div>
                 </div>
               </div>
